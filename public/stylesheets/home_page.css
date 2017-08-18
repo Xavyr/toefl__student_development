@@ -1,0 +1,36 @@
+body {
+  text-align: center;
+  background-image: url("../images/brow_pup.jpeg");
+  background-size: 1440px 960px;
+  background-repeat: no-repeat;
+}
+
+.paper {
+  width: 300px;
+  height: 450px;
+  background-color: white;
+  padding: 50px;
+  margin: 100px 0 0 100px; 
+-webkit-box-shadow: inset 0px 3px 45px 5px rgba(0,0,0,1);
+-moz-box-shadow: inset 0px 3px 45px 5px rgba(0,0,0,1);
+box-shadow: inset 0px 3px 45px 5px rgba(0,0,0,1);
+}
+
+h1 {
+  font-size: 28px;
+  color: #611210;
+}
+
+button {
+  padding: 15px;
+  margin: 15px;
+  border: none;
+  background-color: #E2AC79;
+  font-family: Georgia;
+  font-size: 12px;
+}
+
+button:hover { 
+    background-color: black;
+    color: white;
+}

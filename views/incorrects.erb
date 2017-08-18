@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Vocabulary Software</title>
+
+    <link rel="stylesheet" href="/stylesheets/pure-min.css">
+    <link rel="stylesheet" href="/stylesheets/fonts.css">
+    <link rel="stylesheet" href="/stylesheets/book_viewer.css">
+</head>
+
+<body>
+  <div id="layout">
+      <a href="#menu" id="menuLink" class="menu-link">
+          <span></span>
+      </a>
+
+      <div id="menu">
+          <div class="pure-menu">
+              <a class="pure-menu-heading" href="/">Please Look Carefully...</a>
+              <ul class="pure-menu-list">
+                <li class="pure-menu-item">
+                  <a href="/home" class="pure-menu-link">Home Page</a>
+                  <a href="/synonym" class="pure-menu-link">Synonym Testing</a>
+                  <a href="/definition" class="pure-menu-link">Definition Section</a>
+                  <a href="/cores" class="pure-menu-link">Core Words Testing</a>
+                </li>
+              </ul>
+          </div>
+      </div>
+
+      <div id="main">
+        <div class="header">
+          <h1>Your Incorrect Answers</h1>
+        </div>
+
+        <div class="content">
+          <% if params[:loc] == 'toefl' %>
+            <% @missed_set.each do |missed| %>
+              <h1><%= missed[0] %>.</h1>
+              <p><%= missed[2] %></p>
+              <h4><%= missed[3] %></h4>
+              <p>Answer: <h1><%= missed[1] %></h1></p>
+              <br>
+            <% end %>
+          <% else %> <!-- for syns and defs and cores -->
+            <% @incorrect_data.each do |word| %>
+              <h1 class="content-subhead"><strong>Word</strong>: <%= word.word %></h1>
+              <h1 class="content-subhead"><strong>Definition</strong>: <%= word.definition %></h1>
+              <% if !word.synonyms.nil? %>
+              <h1 class="content-subhead"><strong>Synonyms</strong>: <%= word.synonyms.join(', ') %></h1>
+              <% end %>
+              <% if !word.examples.nil? %>
+              <h1 class="content-subhead"><strong>Example Sentences</strong>: <%= word.examples.join(', ') %></h1>
+              <% end %>
+              <br>
+              <hr>
+            <% end %>
+          <% end %>
+
+          <div class="pure-menu">
+            <ul class="pure-menu-list">
+              <li class="pure-menu-item">
+                <a href="#" class="pure-menu-link"></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="wrapper">
+          <form action="/home">
+            <input type="submit" class="button" value="Clear Words and Start Again" />
+          </form>
+        </div>
+      </div>
+  </div>
+
+  <script type="text/javascript" src="/javascripts/ui.js"></script>
+</body>
+</html>
